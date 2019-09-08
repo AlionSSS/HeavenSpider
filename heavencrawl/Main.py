@@ -10,7 +10,7 @@
 """
 
 import threading
-import threadpool
+from heavencrawl import threadpool
 import time
 import json
 from heavencrawl import HttpUtils, FileUtils
@@ -25,9 +25,11 @@ def start(arg):
     html = HttpUtils.get_html(url)
 
     for each in parse_html(html):
-        print(threading.current_thread().name + ' ->', each['name'], each['imgUrl'])
+        name = each['name']
+        img_url = 'http:' + each['imgUrl']
+        print(threading.current_thread().name + ' ->', name, img_url)
         # 下载图片、保存
-        content = HttpUtils.get_bytes(each['imgUrl'])
+        content = HttpUtils.get_bytes(img_url)
         path = DIR_NAME + '/' + each['imgDir'] + '/' + each['name'] + '.jpg'
         FileUtils.save_file(path, content)
         # 存储为json文本
