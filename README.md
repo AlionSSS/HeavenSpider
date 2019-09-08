@@ -12,7 +12,7 @@
 ## 你可能需要
 - pip3 install requests
 - pip3 install beautifulsoup4
-- pip3 install threadpool
+- pip3 install threadpool (当前最新项目中已自带threadpool，不用再安装)
 - pip3 install retrying
 
 ## 项目结构
